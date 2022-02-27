@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug-gpu|ARM">
+      <Configuration>debug-gpu</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug-gpu|ARM64">
+      <Configuration>debug-gpu</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug-gpu|x64">
+      <Configuration>debug-gpu</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug-gpu|x86">
+      <Configuration>debug-gpu</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release-gpu|ARM">
+      <Configuration>release-gpu</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release-gpu|ARM64">
+      <Configuration>release-gpu</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release-gpu|x64">
+      <Configuration>release-gpu</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release-gpu|x86">
+      <Configuration>release-gpu</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{fe5352d9-d045-4e55-be05-2bfb795be5e5}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>openvcamapp_linux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2B}</LinuxProjectType>
+    <ProjectName>openvcamlib.linux</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>Remote_GCC_1_0</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>Remote_GCC_1_0</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|ARM64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x64'">
+    <IncludePath>$(ProjectDir);$(IncludePath);/usr/local/libtorch/include;/usr/local/libtorch/include/torch/csrc/api/include;/usr/local/include/opencv4</IncludePath>
+    <OutDir>$(ProjectDir)bin\debug\</OutDir>
+    <IntDir>$(ProjectDir)obj\debug\</IntDir>
+    <TargetName>lib$(ProjectName)</TargetName>
+    <LibraryPath>/usr/local/libtorch/lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x64'">
+    <OutDir>$(ProjectDir)bin\release-gpu\</OutDir>
+    <IntDir>$(ProjectDir)obj\release-gpu\</IntDir>
+    <IncludePath>$(ProjectDir);$(IncludePath);/usr/local/libtorch/include;/usr/local/libtorch/include/torch/csrc/api/include;/usr/local/include/opencv4</IncludePath>
+    <TargetName>lib$(ProjectName)</TargetName>
+    <LibraryPath>/usr/local/libtorch/lib</LibraryPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="..\openvcamlib\base64.cpp" />
+    <ClCompile Include="..\openvcamlib\db.cpp" />
+    <ClCompile Include="..\openvcamlib\libmain.cpp" />
+    <ClCompile Include="..\openvcamlib\meta_data_creator.cpp" />
+    <ClCompile Include="..\openvcamlib\motion_tracker.cpp" />
+    <ClCompile Include="..\openvcamlib\object_detection.cpp" />
+    <ClCompile Include="..\openvcamlib\output_video_creator.cpp" />
+    <ClCompile Include="..\openvcamlib\utils.cpp" />
+    <ClCompile Include="..\openvcamlib\worker_thread.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sqlite3.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\openvcamlib\auto_camera.h" />
+    <ClInclude Include="..\openvcamlib\base64.h" />
+    <ClInclude Include="..\openvcamlib\db.h" />
+    <ClInclude Include="..\openvcamlib\geometry.h" />
+    <ClInclude Include="..\openvcamlib\libmain.h" />
+    <ClInclude Include="..\openvcamlib\meta_data_creator.h" />
+    <ClInclude Include="..\openvcamlib\motion_tracker.h" />
+    <ClInclude Include="..\openvcamlib\object_detection.h" />
+    <ClInclude Include="..\openvcamlib\openvcamlib.h" />
+    <ClInclude Include="..\openvcamlib\output_video_creator.h" />
+    <ClInclude Include="..\openvcamlib\platform_defs.h" />
+    <ClInclude Include="..\openvcamlib\utils.h" />
+    <ClInclude Include="..\openvcamlib\vmd.h" />
+    <ClInclude Include="..\openvcamlib\worker_thread.h" />
+    <ClInclude Include="sqlite3.h" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x64'">
+    <Link>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <LibraryDependencies>pthread;dl;torch;torch_cpu;torch_cuda;c10;c10_cuda</LibraryDependencies>
+      <AdditionalOptions>`pkg-config --libs opencv4` -fopenmp %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>LINUX</PreprocessorDefinitions>
+      <AdditionalOptions>`pkg-config --cflags opencv4` %(AdditionalOptions)</AdditionalOptions>
+      <CppLanguageStandard>c++14</CppLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>LINUX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>`pkg-config --cflags opencv4` %(AdditionalOptions)</AdditionalOptions>
+      <CppLanguageStandard>c++14</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>`pkg-config --libs opencv4` -fopenmp %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>pthread;dl;torch;torch_cpu;torch_cuda;c10;c10_cuda</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

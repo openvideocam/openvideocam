@@ -1,0 +1,77 @@
+﻿<Window x:Class="openvcamapp.WinOS.windows.SetFieldAreaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openvcamapp.WinOS.windows"
+        mc:Ignorable="d"
+        Title="SetFieldAreaWindow" Height="600" Width="960" Background="#FFF2F2F2" WindowStyle="None" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style x:Key="ButtonDefaultStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#D0CECE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="10, 0, 0, 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B6B2B2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White" BorderBrush="Black" BorderThickness="0.5">
+        <Border.BitmapEffect>
+            <DropShadowBitmapEffect Color="Black" Direction="270" ShadowDepth="5" Opacity="0.5" Softness="2" />
+        </Border.BitmapEffect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Set field area" HorizontalAlignment="Left" Margin="15,1,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16" />
+
+            <RadioButton Grid.Row="1" Grid.Column="0" x:Name="rdbAutoDetect" Checked="rdbAutoDetect_Checked" Margin="30,0,0,0" GroupName="Options" IsChecked="True" VerticalAlignment="Center" Foreground="Black" FontSize="14">Auto detect</RadioButton>
+            <RadioButton Grid.Row="2" Grid.Column="0" x:Name="rdbSetManually" Margin="30,0,0,0" GroupName="Options" VerticalAlignment="Center" Foreground="Black" FontSize="14">Set manually</RadioButton>
+
+            <Canvas Name="cnvImage" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="imgSnapshot" Stretch="Fill" Loaded="imgSnapshot_Loaded" MouseDown="imgSnapshot_MouseDown">
+                    <Image.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="mnuClearLines" Header="Clear lines" Click="mnuClearLines_Click" />
+                            <MenuItem x:Name="mnuClearLastLine" Header="Clear last line" Click="mnuClearLastLine_Click" />                            
+                        </ContextMenu>
+                    </Image.ContextMenu>                    
+                </Image>
+            </Canvas>
+
+            <CheckBox Grid.Row="4" Grid.Column="0" x:Name="ckbApplyChanges" Content="Apply changes to selected videos" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14"/>
+
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnSave"  Click="btnSave_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 0, 0" FontSize="14" Height="30" Width="100">
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Height="20">Ok</TextBlock>
+                </Button>
+
+                <Button x:Name="btnCancel" Click="btnCancel_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10, 0, 30, 0" FontSize="14" Height="30" Width="100">
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Height="20">Cancel</TextBlock>
+                </Button>
+            </StackPanel>            
+        </Grid>
+    </Border>
+</Window>

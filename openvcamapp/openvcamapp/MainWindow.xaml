@@ -1,0 +1,25 @@
+﻿<Window
+    x:Class="openvcamapp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:openvcamapp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <NavigationView x:Name="nvSample"                     
+                    Header="Open Video Camera"
+                    PaneDisplayMode="Auto" 
+                    IsSettingsVisible="True"
+                    IsTabStop="False"                     
+                    SelectionChanged="nvSample_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="Title_HomePage" Icon="Home" Content="Home" Tag="HomePage" />
+            <NavigationViewItem x:Uid="Title_InputVideoPage" Icon="Camera" Content="Input Video" Tag="InputVideoPage" />
+            <NavigationViewItem x:Uid="Title_StatisticsPage" Icon="ThreeBars" Content="Statistics" Tag="StatisticsPage" />
+            <NavigationViewItem x:Uid="Title_OutputVideoPage" Icon="Video" Content="Output Video" Tag="OutputVideoPage" />
+            <NavigationViewItem x:Uid="Title_HelpPage" Icon="Help" Content="Help" Tag="HelpPage" />
+        </NavigationView.MenuItems>        
+        <Frame x:Name="contentFrame"/>        
+    </NavigationView>    
+</Window>

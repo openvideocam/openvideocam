@@ -1,0 +1,142 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64</Platforms>
+    <Configurations>release-gpu;debug-gpu</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <ApplicationIcon>icons\openvcam_gray.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x64'">
+    <OutputPath>..\..\bin\release-gpu\openvcamapp.winos\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x64'">
+    <OutputPath>..\..\bin\debug-gpu\openvcamapp.winos\</OutputPath>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons\add.png" />
+    <None Remove="icons\back.png" />
+    <None Remove="icons\close.png" />
+    <None Remove="icons\close_window.png" />
+    <None Remove="icons\enlarge.png" />
+    <None Remove="icons\forward.png" />
+    <None Remove="icons\input_video.png" />
+    <None Remove="icons\maximize.png" />
+    <None Remove="icons\minimize.png" />
+    <None Remove="icons\output_video.png" />
+    <None Remove="icons\pause.png" />
+    <None Remove="icons\play.png" />
+    <None Remove="icons\poweroff.png" />
+    <None Remove="icons\process.png" />
+    <None Remove="icons\remove.png" />
+    <None Remove="icons\restore.png" />
+    <None Remove="icons\save.png" />
+    <None Remove="icons\saveas.png" />
+    <None Remove="icons\stop.png" />
+    <None Remove="icons\summary.png" />
+    <None Remove="icons\tune%4032px.png" />
+    <None Remove="icons\video-library%4032px.png" />
+    <None Remove="icons\video.png" />
+    <None Remove="images\field.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\back.png" />
+    <Resource Include="icons\enlarge.png" />
+    <Resource Include="icons\forward.png" />
+    <Resource Include="icons\pause.png" />
+    <Resource Include="icons\play.png" />
+    <Resource Include="icons\saveas.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\openvcamappshared\openvcamapp.shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\add.png" />
+    <Resource Include="icons\close.png" />
+    <Resource Include="icons\close_window.png" />
+    <Resource Include="icons\input_video.png" />
+    <Resource Include="icons\maximize.png" />
+    <Resource Include="icons\minimize.png" />
+    <Resource Include="icons\output_video.png" />
+    <Resource Include="icons\process.png" />
+    <Resource Include="icons\remove.png" />
+    <Resource Include="icons\restore.png" />
+    <Resource Include="icons\save.png" />
+    <Resource Include="icons\summary.png" />
+    <Resource Include="icons\stop.png" />
+    <Resource Include="icons\video.png" />
+    <Resource Include="images\field.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="windows\CropVideoWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="windows\SetFieldAreaWindow - Copy.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SetFieldAreaWindow.xaml.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="OpenVideoCamera.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="saved_model\saved_model.pb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="saved_model\variables\variables.data-00000-of-00001">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="saved_model\variables\variables.index">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="windows\CropVideoWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="windows\SetCameraPositionWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(SolutionDir)..\binaries\sqlite\3.34.0\sqlite3.dll                                                                                  $(TargetDir)\sqlite3.dll&#xD;&#xA;&#xD;&#xA;copy $(SolutionDir)..\binaries\openh264\1.8.0\openh264-1.8.0-win64.dll                                                  $(TargetDir)\openh264-1.8.0-win64.dll&#xD;&#xA;&#xD;&#xA;copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_world450.dll                      $(TargetDir)\opencv_world450.dll&#xD;&#xA;copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_world450d.dll                    $(TargetDir)\opencv_world450d.dll&#xD;&#xA;&#xD;&#xA;copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_ffmpeg450_64.dll $(TargetDir)\opencv_videoio_ffmpeg450_64.dll&#xD;&#xA;&#xD;&#xA;copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_msmf450_64.dll    $(TargetDir)\opencv_videoio_msmf450_64.dll&#xD;&#xA;copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_msmf450_64d.dll  $(TargetDir)\opencv_videoio_msmf450_64d.dll&#xD;&#xA;&#xD;&#xA;copy $(SolutionDir)bin\$(ConfigurationName)\openvcamlib\openvcamlib.dll                                             $(TargetDir)\openvcamlib.dll&#xD;&#xA;" />
+  </Target>
+
+</Project>

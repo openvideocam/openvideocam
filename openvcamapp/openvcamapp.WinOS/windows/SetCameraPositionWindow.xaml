@@ -1,0 +1,157 @@
+﻿<Window x:Class="openvcamapp.WinOS.windows.SetCameraPositionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openvcamapp.WinOS.windows"
+        mc:Ignorable="d"
+        Title="SetCameraPositionWindow" Height="400" Width="400" Background="#FFF2F2F2" WindowStyle="None" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style x:Key="ButtonDefaultStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#D0CECE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="10, 0, 0, 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B6B2B2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White" BorderBrush="Black" BorderThickness="0.5">
+        <Border.BitmapEffect>
+            <DropShadowBitmapEffect Color="Black" Direction="270" ShadowDepth="5" Opacity="0.5" Softness="2" />
+        </Border.BitmapEffect>
+        <Grid x:Name="gridMain">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="40" />                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="20" />                
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="22" Content="Set camera position" HorizontalAlignment="Left" Margin="15,1,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16" />
+
+            <Button Grid.Row="2" Grid.Column="1" Tag="40" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="2" Tag="39" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="3" Tag="38" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="4" Tag="37" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="5" Tag="36" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="6" Tag="35" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="7" Tag="34" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="8" Tag="33" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="9" Tag="32" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="10" Tag="31" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="11" Tag="30" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="12" Tag="29" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="13" Tag="28" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="14" Tag="27" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="15" Tag="26" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="16" Tag="25" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="17" Tag="24" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="18" Tag="23" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="2" Grid.Column="19" Tag="22" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+
+            <Button Grid.Row="14" Grid.Column="1" Tag="52" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="2" Tag="53" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="3" Tag="54" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="4" Tag="55" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="5" Tag="56" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="6" Tag="57" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="7" Tag="58" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="8" Tag="59" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="9" Tag="60" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="10" Tag="1" x:Name="btn1" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="11" Tag="2" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="12" Tag="3" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="13" Tag="4" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="14" Tag="5" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="15" Tag="6" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="16" Tag="7" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="17" Tag="8" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="18" Tag="9" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="14" Grid.Column="19" Tag="10" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+
+            <Button Grid.Row="3" Grid.Column="1" Tag="41" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="4" Grid.Column="1" Tag="42" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="5" Grid.Column="1" Tag="43" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="6" Grid.Column="1" Tag="44" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="7" Grid.Column="1" Tag="45" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="8" Grid.Column="1" Tag="46" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="9" Grid.Column="1" Tag="47" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="10" Grid.Column="1" Tag="48" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="11" Grid.Column="1" Tag="49" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="12" Grid.Column="1" Tag="50" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="13" Grid.Column="1" Tag="51" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+
+            <Button Grid.Row="3" Grid.Column="19" Tag="21" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="4" Grid.Column="19" Tag="20" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="5" Grid.Column="19" Tag="19" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="6" Grid.Column="19" Tag="18" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="7" Grid.Column="19" Tag="17" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="8" Grid.Column="19" Tag="16" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="9" Grid.Column="19" Tag="15" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="10" Grid.Column="19" Tag="14" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="11" Grid.Column="19" Tag="13" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="12" Grid.Column="19" Tag="12" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+            <Button Grid.Row="13" Grid.Column="19" Tag="11" Background="#D0CECE" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click" />
+
+            <Image x:Name="imgSnapshot" Grid.Row="3" Grid.Column="2" Grid.RowSpan="11" Grid.ColumnSpan="17" Source="/images/field.png"  Stretch="Fill" Height="220" Width="340"/>
+
+            <StackPanel Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="22" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnSave"  Click="btnSave_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 0, 0" FontSize="14" Height="30" Width="100">
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Height="20">Ok</TextBlock>
+                </Button>
+
+                <Button x:Name="btnCancel" Click="btnCancel_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10, 0, 30, 0" FontSize="14" Height="30" Width="100">
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Height="20">Cancel</TextBlock>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

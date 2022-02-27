@@ -1,0 +1,85 @@
+﻿<Page x:Class="openvcamapp.winos.pages.WelcomePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openvcamapp.winos.pages"
+        mc:Ignorable="d"
+        Background="#F2F2F2"
+        Height="450" Width="800"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Margin="-65, 0, 0, 0">
+
+    <Page.Resources>
+        <Style x:Key="ButtonDefaultStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#D0CECE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="10, 0, 0, 0">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B6B2B2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Welcome to OpenVideoCam!" Margin="16,11,0,0" Foreground="Black" FontSize="32" />
+
+        <Label Grid.Row="1" Content="What would you like to do today?" Margin="16, 0,0,0" Foreground="Black" FontSize="20" />
+
+        <Button Grid.Row="2" x:Name="btnCreateProject" Content="Create a new video project" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30, 0, 0, 0" FontSize="14" Click="btnCreateProject_Click" Height="30" Width="240" />
+
+        <Button Grid.Row="3" x:Name="btnOpenProject" Content="Open an existing video project" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30, 0, 0, 0" FontSize="14" Click="btnOpenProject_Click" Height="30" Width="240" />
+
+        <Label Grid.Row="4" Content="Open a recently edited video project:" Margin="30, 0,0,0" Foreground="Black" FontSize="20" />
+
+        <TextBlock Grid.Row="5" Margin="50, 0,0,0">
+            <Hyperlink x:Name="lnkRecentFile1" Click="Hyperlink_Click" Foreground="Black" FontSize="16">
+                <TextBlock x:Name="lblRecentFile1" />
+            </Hyperlink>
+        </TextBlock>
+        <TextBlock Grid.Row="6" Margin="50, 0,0,0">
+            <Hyperlink x:Name="lnkRecentFile2" Click="Hyperlink_Click" Foreground="Black" FontSize="16">
+                <TextBlock x:Name="lblRecentFile2" />
+            </Hyperlink>
+        </TextBlock>
+        <TextBlock Grid.Row="7" Margin="50, 0,0,0">
+            <Hyperlink x:Name="lnkRecentFile3" Click="Hyperlink_Click" Foreground="Black" FontSize="16">
+                <TextBlock x:Name="lblRecentFile3" />
+            </Hyperlink>
+        </TextBlock>
+        <TextBlock Grid.Row="8" Margin="50, 0,0,0">
+            <Hyperlink x:Name="lnkRecentFile4" Click="Hyperlink_Click" Foreground="Black" FontSize="16">
+                <TextBlock x:Name="lblRecentFile4" />
+            </Hyperlink>
+        </TextBlock>
+        <TextBlock Grid.Row="9" Margin="50, 0,0,0">
+            <Hyperlink x:Name="lnkRecentFile5" Click="Hyperlink_Click" Foreground="Black" FontSize="16">
+                <TextBlock x:Name="lblRecentFile5" />
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</Page>

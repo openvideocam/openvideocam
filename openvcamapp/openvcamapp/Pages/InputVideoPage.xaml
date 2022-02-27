@@ -1,0 +1,112 @@
+﻿<Page
+    x:Class="openvcamapp.Pages.InputVideoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+    xmlns:local="using:OpenVCam.DataAccess"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel>
+        <CommandBar x:Name="CmdBar" RelativePanel.AlignRightWithPanel="True">
+            <AppBarButton Icon="Add" Label="Add Video" Click="AddVideoClick" />
+            <AppBarButton Icon="Remove" Label="Remove Video" Click="RemoveVideoClick" />
+            <AppBarSeparator/>
+        </CommandBar>
+        
+        <GridView x:Name="VideosGridView" 
+                  ItemsSource="{x:Bind ViewModel.MetaData.Videos}" 
+                  SelectionMode="Single" 
+                  CanDrag="True" 
+                  AllowDrop="True"                   
+                  DragOver="VideosGridView_DragOver"
+                  Drop="VideosGridView_Drop"
+                  RelativePanel.Below="CmdBar"
+                  RelativePanel.AlignLeftWithPanel="True">
+            
+            <GridView.ItemTemplate>
+                <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local:Video">
+                    <Grid Height="180" Width="320" AutomationProperties.Name="{x:Bind Name}"  RightTapped="GridView_RightTapped">
+                        <Image Stretch="UniformToFill" Loaded="Image_Loaded"/>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="3" Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Background="{ThemeResource SystemBaseLowColor}" Padding="12">
+                            <TextBlock Text="{x:Bind Name}" Foreground="White"/>
+                            <TextBlock Text="{x:Bind Name}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="White"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="4" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+
+            <GridView.Resources>
+                <MenuFlyout x:Name="allContactsMenuFlyout">
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem x:Uid="InputVideo_SetCameraPosition" x:Name="SetCameraPosition" Click="SetCameraPosition_Click"  Text="Set Camera Position" />
+                        <MenuFlyoutItem x:Uid="InputVideo_ProcessStatistics" x:Name="ProcessStatistics" Click="ProcessStatistics_Click" Text="Process Statistics" />
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </GridView.Resources>
+
+        </GridView>
+
+        <ContentDialog x:Name="setCameraPositionDiag"
+                       PrimaryButtonText="Save"                        
+                       IsPrimaryButtonEnabled="True"
+                       CloseButtonText="Cancel"
+                       Opened="setCameraPositionDiag_Opened">    
+            <ContentDialog.TitleTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">                        
+                        <TextBlock Text="Set Camera Position"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentDialog.TitleTemplate>
+            <StackPanel>
+                <Grid x:Name="mainGrid" Height="180" Width="320" AutomationProperties.Name="Example" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="0" Grid.Column="1" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="0" Grid.Column="2" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="0" Grid.Column="3" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="0" Grid.Column="4" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+
+                    <Grid Grid.Row="1" Grid.Column="0" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+
+                    <Image Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="3" Source="/Images/field_example.png" Stretch="UniformToFill"/>
+
+                    <Grid Grid.Row="1" Grid.Column="4" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+
+                    <Grid Grid.Row="2" Grid.Column="0" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="2" Grid.Column="4" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+
+                    <Grid Grid.Row="3" Grid.Column="0" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="3" Grid.Column="4" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+
+                    <Grid Grid.Row="4" Grid.Column="0" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="4" Grid.Column="1" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid x:Name="defaultCell" Grid.Row="4" Grid.Column="2" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="4" Grid.Column="3" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                    <Grid Grid.Row="4" Grid.Column="4" Background="DarkGray" Margin="3" Tapped="Grid_Tapped" />
+                </Grid>
+            </StackPanel>
+        </ContentDialog>
+    </RelativePanel>
+</Page>

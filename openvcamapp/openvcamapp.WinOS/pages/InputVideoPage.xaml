@@ -1,0 +1,396 @@
+﻿<Page x:Class="openvcam.WinOS.pages.InputVideoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=System.Runtime" xmlns:local1="clr-namespace:openvcamapp.winos.controls"
+      mc:Ignorable="d"       
+      d:DesignHeight="450" d:DesignWidth="800"     
+      Background="#F2F2F2"
+      Title="InputVideo">
+
+    <Page.Resources>
+        <Storyboard x:Key="ScaleImageStoryboardEnter">
+            <DoubleAnimation Duration="0:0:0.2" From="1" To="1.2" 
+                             Storyboard.TargetName="ScaleImage" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" From="1" To="1.2" 
+                             Storyboard.TargetName="ScaleImage" Storyboard.TargetProperty="ScaleY"/>
+        </Storyboard>
+        <Storyboard x:Key="ScaleImageStoryboardLeave">
+            <DoubleAnimation Duration="0:0:0.2" From="1.2" To="1" 
+                             Storyboard.TargetName="ScaleImage" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" From="1.2" To="1" 
+                             Storyboard.TargetName="ScaleImage" Storyboard.TargetProperty="ScaleY"/>
+        </Storyboard>
+
+        <Style x:Key="ButtonDefaultStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#D0CECE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="10, 0, 0, 0">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B6B2B2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonSelectedStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#D0CECE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="10, 0, 0, 0">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B6B2B2"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding SelectedItem, ElementName=ListViewItems}" Value="{x:Null}">
+                    <Setter Property="Background" Value="#E7E6E6" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding SelectedItem, ElementName=ListViewItems}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="195" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="8*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Input" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="16" FontWeight="Bold" />
+
+        <Grid Margin="0, 0, 15, 0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="10" />                
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAddVideo" Grid.Row="0" Grid.Column="0" Click="btnAddVideo_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 0, 0, 0" FontSize="14" Height="30" Width="120">
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="/icons/add.png" Stretch="Fill" Height="25" Width="25" />
+                    <TextBlock Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">Add</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="btnDelVideo" Grid.Row="0" Grid.Column="2" Click="btnDelVideo_Click" Style="{StaticResource ButtonSelectedStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 0, 0, 0" FontSize="14" Height="30" Width="120">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/icons/remove.png" Stretch="Fill" Height="20" Width="20" />
+                    <TextBlock Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" >Remove</TextBlock>
+                </StackPanel>
+            </Button>            
+
+            <Button x:Name="btnOthers" Grid.Row="0" Grid.Column="4" Style="{StaticResource ButtonSelectedStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 0, 0, 0" FontSize="14" Height="30" Width="30">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MainContextMenu">
+                        <ContextMenu.Resources>
+                            <Style TargetType="{x:Type MenuItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type MenuItem}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter Content="{TemplateBinding Header}" Margin="15 5 10 5" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsHighlighted" Value="True">
+                                                    <Setter Property="Background"  Value="#B6B2B2"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ContextMenu.Resources>
+                        <MenuItem x:Name="mnuSetFieldArea" Header="Set field area" Height="30" Click="mnuSetFieldArea_Click" />
+                        <MenuItem x:Name="mnuSetCameraPosition" Header="Set camera position" Height="30" Click="mnuSetCameraPosition_Click" />
+                        <MenuItem x:Name="mnuCropVideo" Header="Crop video" Height="30" Click="mnuCropVideo_Click" />
+                        <MenuItem x:Name="mnuProcess" Header="Process" Height="30" Click="btnProcessVideo_Click" />
+                        <ContextMenu.Style>
+                            <Style TargetType="{x:Type ContextMenu}">
+                                <Setter Property="SnapsToDevicePixels" Value="True" />
+                                <Setter Property="OverridesDefaultStyle" Value="True" />
+                                <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+                                <Setter Property="HasDropShadow" Value="True" />
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ContextMenu}">
+                                            <Border x:Name="Border" Background="#D0CECE" BorderThickness="1">
+                                                <ItemsPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ContextMenu.Style>
+                    </ContextMenu>
+                </Button.ContextMenu>
+
+                <Button.Triggers>
+                    <EventTrigger SourceName="btnOthers" RoutedEvent="Button.Click">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MainContextMenu" Storyboard.TargetProperty="(ContextMenu.IsOpen)">
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <sys:Boolean>True</sys:Boolean>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+                <StackPanel>
+                    <TextBlock Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">...</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15, 0, 15, 15" Background="White" BorderBrush="Black" BorderThickness="0.3">
+            <Border.BitmapEffect>
+                <DropShadowBitmapEffect  Color="Black" Direction="270" ShadowDepth="3" Opacity="0.4" Softness="1" />
+            </Border.BitmapEffect>
+        </Border>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15, 0, 15, 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Content="Videos" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="16" FontWeight="Bold" />
+
+            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15, 0, 15, 15" x:Name="MyScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <ListView x:Name="ListViewItems" 
+                              ItemsSource="{Binding ViewModel.MetaData.Videos}" 
+                              BorderThickness="0" 
+                              BorderBrush="#F2F2F2" 
+                              Background="White" 
+                              MouseDoubleClick="ListViewItems_MouseDoubleClick" 
+                              SelectionChanged="ListViewItems_SelectionChanged" 
+                              AllowDrop="True" 
+                              Drop="ListViewItems_Drop" 
+                              MinHeight="100" 
+                              PreviewMouseLeftButtonDown="ListViewItems_PreviewMouseLeftButtonDown"
+                              MouseMove="ListViewItems_MouseMove"
+                              DragEnter="ListViewItems_DragEnter">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Margin" Value="3"/>
+                                <Setter Property="Padding" Value="3"/>                                        
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border x:Name="Bd"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        SnapsToDevicePixels="true">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="Selector.IsSelectionActive" Value="False" />
+                                                        <Condition Property="IsSelected" Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background" TargetName="Bd" Value="Black" />
+                                                </MultiTrigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="Selector.IsSelectionActive" Value="True" />
+                                                        <Condition Property="IsSelected" Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background" TargetName="Bd" Value="Black" />
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="1" Width="240" Height="135" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="1"/>
+                                    </Border.Effect>
+                                    <StackPanel>
+                                        <Border Width="240" Height="135" Margin="1">
+                                            <Image x:Name="imgSnapshop" Stretch="Fill" Loaded="Image_Loaded" RenderTransformOrigin="0.5, 0.5">
+                                                <Image.RenderTransform>
+                                                    <ScaleTransform x:Name="ScaleImage"/>
+                                                </Image.RenderTransform>
+                                                <Image.Triggers>
+                                                    <EventTrigger RoutedEvent="Image.MouseEnter">
+                                                        <BeginStoryboard Storyboard="{StaticResource ScaleImageStoryboardEnter}"/>
+                                                    </EventTrigger>
+                                                    <EventTrigger RoutedEvent="Image.MouseLeave">
+                                                        <BeginStoryboard Storyboard="{StaticResource ScaleImageStoryboardLeave}"/>
+                                                    </EventTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </Border>
+                                        <StackPanel Margin="0, -35, 0, 0" Height="60" Width="215">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="25" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="40" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="0" Grid.Column="0" Source="/icons/video.png" Stretch="Fill" Height="20" Width="20"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="1" Margin="0" Text="{Binding Name}" FontSize="12" Foreground="White" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="2" Margin="0" Text="00:00:00" FontSize="11" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                                            </Grid>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ElementName=MyScrollViewer, Path=ViewportWidth}" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </StackPanel>            
+            </ScrollViewer>  
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" x:Name="pnlProgressOverlay" Background="#80767171" Visibility="Hidden" Margin="-65, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="195" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="8*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80, 0, 15, 15" Background="White" BorderBrush="Black" BorderThickness="0.3">
+                <Border.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="Black" Direction="270" ShadowDepth="3" Opacity="0.4" Softness="1" />
+                </Border.BitmapEffect>
+            </Border>
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80, 0, 15, 15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" x:Name="txtVideo" Text="Processing video" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" FontWeight="Bold" />
+
+                <local1:LoadingControl Grid.Row="0" Grid.Column="1" Diameter="15" Color1="#767171" Color2="Transparent"/>
+
+                <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="pbProcess" Visibility="Visible" Margin="30,0,30,0" Height="24" Value="0" Minimum="0" Maximum="100"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="txtProgress" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" Text="{Binding Value, ElementName=pbLoad, StringFormat=\{0:0\}%}" />
+
+                <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnCancelProcess" Click="btnCancelProcess_Click" Style="{StaticResource ButtonDefaultStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 28, 0" FontSize="14" Height="30" Width="120">
+                    <TextBlock Margin="27 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">Cancel</TextBlock>
+                </Button>
+
+            </Grid>
+        </Grid>
+        <Border x:Name="pnlDetailsBorder" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="15, 0, 15, 15" Background="White" BorderBrush="Black" BorderThickness="0.3">
+            <Border.BitmapEffect>
+                <DropShadowBitmapEffect  Color="Black" Direction="270" ShadowDepth="3" Opacity="0.4" Softness="1" />
+            </Border.BitmapEffect>
+        </Border>
+        <Grid x:Name="pnlDetails" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="15, 0, 15, 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Details" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" FontWeight="Bold" />
+
+            <Label Grid.Row="1" Grid.Column="0" Content="File Name:" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" x:Name="lblFilename" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Size:" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblSize" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+
+            <Label Grid.Row="3" Grid.Column="0" Content="Length:" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="lblLength" Text="00:00:00" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Game Half:" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <ComboBox  Grid.Row="4" Grid.Column="1" x:Name="cbxGameHalf" Height="25"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="170" BorderBrush="Black" BorderThickness="1" FontSize="14" SelectionChanged="cbxGameHalf_SelectionChanged">
+                <ComboBoxItem Tag="0">Undefined</ComboBoxItem>
+                <ComboBoxItem Tag="1">First Half</ComboBoxItem>
+                <ComboBoxItem Tag="2">Second Half</ComboBoxItem>
+            </ComboBox>
+
+            <Label Grid.Row="2" Grid.Column="3" Content="Field Position:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+                        
+            <Label Grid.Row="3" Grid.Column="3" Content="Team 1:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <TextBlock Grid.Row="3" Grid.Column="4" x:Name="lblTeam1Name" Text="" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <ComboBox Grid.Row="3" Grid.Column="5" x:Name="cbxTeam1Position" Margin="10,0,0,0" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Width="90" BorderBrush="Black" BorderThickness="1" FontSize="14" SelectionChanged="cbxTeam1Position_SelectionChanged">                            
+                <ComboBoxItem Tag="L">Left</ComboBoxItem>
+                <ComboBoxItem Tag="R">Right</ComboBoxItem>
+            </ComboBox>
+
+            <Label Grid.Row="4" Grid.Column="3" Content="Team 2:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <TextBlock Grid.Row="4" Grid.Column="4" x:Name="lblTeam2Name" Text=""  HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="Black" FontSize="14" />
+            <ComboBox Grid.Row="4" Grid.Column="5" x:Name="cbxTeam2Position" Margin="10,0,0,0" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Width="90" BorderBrush="Black" BorderThickness="1" FontSize="14" SelectionChanged="cbxTeam2Position_SelectionChanged">                            
+                <ComboBoxItem Tag="L">Left</ComboBoxItem>
+                <ComboBoxItem Tag="R">Right</ComboBoxItem>
+            </ComboBox>                    
+        </Grid>                  
+    </Grid>
+
+</Page>

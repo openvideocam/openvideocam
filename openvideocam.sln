@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcam", "openvcam\openvcam.vcxproj", "{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4} = {A50426E6-5C1E-4E99-8B31-7D302E13D8E4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcamlib", "openvcamlib\openvideocamlib.vcxproj", "{A50426E6-5C1E-4E99-8B31-7D302E13D8E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openvcamlibnet", "openvcamlibnet\openvcamlibnet.csproj", "{5484EFA1-4C9F-4D0C-9CAF-254B65C42D9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "openvcamapp", "openvcamapp", "{1FCF979A-4495-4A57-8311-8A7D1CE95D95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openvcamapp.shared", "openvcamappshared\openvcamapp.shared.csproj", "{770BA2FA-7475-4E96-9807-A4290A9A45A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openvcamapp.winos", "openvcamapp\openvcamapp.WinOS\openvcamapp.winos.csproj", "{B9113DF4-68B8-480C-8292-818D1BB6FC9D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4} = {A50426E6-5C1E-4E99-8B31-7D302E13D8E4}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6D0F05FD-9525-40CD-8E1C-1BDA2284C95C}"
+	ProjectSection(SolutionItems) = preProject
+		openvcamapp\docs\openvcam-ui-mockup.pptx = openvcamapp\docs\openvcam-ui-mockup.pptx
+		openvcamapp\docs\zoom-field-location.pptx = openvcamapp\docs\zoom-field-location.pptx
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcamlib.linux", "openvcamlib.linux\openvcamlib.linux.vcxproj", "{FE5352D9-D045-4E55-BE05-2BFB795BE5E5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcam.linux", "openvcam.linux\openvcam.linux.vcxproj", "{3528665C-22CE-48B5-95D3-BFFA53FC09B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		debug-gpu|x64 = debug-gpu|x64
+		release-gpu|x64 = release-gpu|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}.debug-gpu|x64.Build.0 = debug-gpu|x64
+		{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}.release-gpu|x64.Build.0 = release-gpu|x64
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4}.debug-gpu|x64.Build.0 = debug-gpu|x64
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{A50426E6-5C1E-4E99-8B31-7D302E13D8E4}.release-gpu|x64.Build.0 = release-gpu|x64
+		{5484EFA1-4C9F-4D0C-9CAF-254B65C42D9E}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{5484EFA1-4C9F-4D0C-9CAF-254B65C42D9E}.debug-gpu|x64.Build.0 = debug-gpu|x64
+		{5484EFA1-4C9F-4D0C-9CAF-254B65C42D9E}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{5484EFA1-4C9F-4D0C-9CAF-254B65C42D9E}.release-gpu|x64.Build.0 = release-gpu|x64
+		{770BA2FA-7475-4E96-9807-A4290A9A45A6}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{770BA2FA-7475-4E96-9807-A4290A9A45A6}.debug-gpu|x64.Build.0 = debug-gpu|x64
+		{770BA2FA-7475-4E96-9807-A4290A9A45A6}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{770BA2FA-7475-4E96-9807-A4290A9A45A6}.release-gpu|x64.Build.0 = release-gpu|x64
+		{B9113DF4-68B8-480C-8292-818D1BB6FC9D}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{B9113DF4-68B8-480C-8292-818D1BB6FC9D}.debug-gpu|x64.Build.0 = debug-gpu|x64
+		{B9113DF4-68B8-480C-8292-818D1BB6FC9D}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{B9113DF4-68B8-480C-8292-818D1BB6FC9D}.release-gpu|x64.Build.0 = release-gpu|x64
+		{FE5352D9-D045-4E55-BE05-2BFB795BE5E5}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{FE5352D9-D045-4E55-BE05-2BFB795BE5E5}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{3528665C-22CE-48B5-95D3-BFFA53FC09B3}.debug-gpu|x64.ActiveCfg = debug-gpu|x64
+		{3528665C-22CE-48B5-95D3-BFFA53FC09B3}.release-gpu|x64.ActiveCfg = release-gpu|x64
+		{3528665C-22CE-48B5-95D3-BFFA53FC09B3}.release-gpu|x64.Deploy.0 = release-gpu|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{770BA2FA-7475-4E96-9807-A4290A9A45A6} = {1FCF979A-4495-4A57-8311-8A7D1CE95D95}
+		{B9113DF4-68B8-480C-8292-818D1BB6FC9D} = {1FCF979A-4495-4A57-8311-8A7D1CE95D95}
+		{6D0F05FD-9525-40CD-8E1C-1BDA2284C95C} = {1FCF979A-4495-4A57-8311-8A7D1CE95D95}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65B8231F-04A2-4A79-B9EC-3F0328BF46AE}
+	EndGlobalSection
+EndGlobal
