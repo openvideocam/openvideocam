@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcam", "openvcam\openvcam.vcxproj", "{F602B02A-D3DC-4B9C-BF69-97D5B0BA6607}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -30,6 +30,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcamlib.linux", "openvcamlib.linux\openvcamlib.linux.vcxproj", "{FE5352D9-D045-4E55-BE05-2BFB795BE5E5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openvcam.linux", "openvcam.linux\openvcam.linux.vcxproj", "{3528665C-22CE-48B5-95D3-BFFA53FC09B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30CC2F65-B01E-483D-9AC4-590E8F1B5CEC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
