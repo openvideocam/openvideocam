@@ -409,7 +409,7 @@ public:
         m_videos.clear();
 
         //Load videos table
-        SQLITERecordSet* videos_recordset = meta_data_db.GetRecordSet(L"SELECT ID, NAME, FRAME_COUNT, FIELD_LOCATION, CAMERA_POSITION, SELECTION_START, SELECTION_END, FPS, FRAME_WIDTH, FRAME_HEIGHT FROM TB_VIDEOS;");
+        SQLITERecordSet* videos_recordset = meta_data_db.GetRecordSet(L"SELECT ID, NAME, FRAME_COUNT, FIELD_LOCATION, CAMERA_POSITION, SELECTION_START, SELECTION_END, FPS, FRAME_WIDTH, FRAME_HEIGHT FROM TB_VIDEOS ORDER BY ID;");
         while (videos_recordset->GotoNextRow())
         {
             m_videos.push_back(Video(
