@@ -10,9 +10,9 @@ All cameras that we are aware off in the market are provided with a required sub
 
 ## What is the difference from OpenVideoCam to other AI sports cameras in the market?
 Commercial AI sports cameras in the market provide a single and simple solution where the camera records and processes the source video, uploads the results to a website where the end user can watch the game later. 
-OpenVideoCam is windows application that can process games recorded with *any camera* and produce an final video with all the nice zooming and panning AI cameras do. 
+OpenVideoCam is windows application that can process games recorded with **any camera** and produce an final video with all the nice zooming and panning AI cameras do. 
 Because OpenVideoCam is a software only solution, it requires a little more work from the user because you need to transfer the raw recorded video to the computer so OpenVideoCam can process it and then you need to upload it to YouTube, Vimeo or other web video streaming solutions to watch it anywhere or just watch in the computer.
-Although users have more work to have the final video available on the WEB, OpenVideoCam ends up being super flexible because you “own” the process, so you can use any camera you have, store your video anywhere you want and the most important thing, *it is ALL FREE!* 
+Although users have more work to have the final video available on the WEB, OpenVideoCam ends up being super flexible because you “own” the process, so you can use any camera you have, store your video anywhere you want and the most important thing, **it is ALL FREE!** 
 
 ## It the output produced by OpenVideoCam as good as commercial AI sports cameras? 
 Not yet, but anyone is welcome to help as it is a free software! On another hand, you do not need to buy an expensive camera nor pay a subscription to use it!
