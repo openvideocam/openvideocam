@@ -10,8 +10,8 @@ All cameras that we are aware off in the market are provided with a required sub
 
 ## What is the difference from OpenVideoCam to other AI sports cameras in the market?
 Commercial AI sports cameras in the market provide a single and simple solution where the camera records and processes the source video, uploads the results to a website where the end user can watch the game later. 
-OpenVideoCam is windows application that can process games recorded with **any camera** and produce an final video with all the nice zooming and panning AI cameras do. 
-Because OpenVideoCam is a software only solution, it requires a little more work from the user because you need to transfer the raw recorded video to the computer so OpenVideoCam can process it and then you need to upload it to YouTube, Vimeo or other web video streaming solutions to watch it anywhere or just watch in the computer.
+OpenVideoCam is windows application that can process games recorded with **any camera** and produce a final video with all the nice zooming and panning AI cameras do. 
+Because OpenVideoCam is a software only solution, it requires a little more work from the user because you need to transfer the raw recorded video to the computer so OpenVideoCam can process it and then you need to upload it to YouTube, Vimeo or other web video streaming solution to watch it anywhere or just watch in the computer.
 Although users have more work to have the final video available on the WEB, OpenVideoCam ends up being super flexible because you “own” the process, so you can use any camera you have, store your video anywhere you want and the most important thing, **it is ALL FREE!** 
 
 ## It the output produced by OpenVideoCam as good as commercial AI sports cameras? 
@@ -19,6 +19,10 @@ Not yet, but anyone is welcome to help as it is a free software! On another hand
  
 ## What do I need to use OpenVideoCam?
 OpenVideoCam requires a Windows computer with a NVIDIA graphics card. Please note that OpenVideoCam can be used in computers without NVIDIA cards, but the time needed to process a video is much longer.
+
+## Do you have a MAC or Linux version of OpenVideoCam?
+
+OpenVideoCam is currently a Windows only application. Having said that, we have created and compiled a LINUX command line version of OpenVideoCam so you can technically process videos in LINUX too. We do not have plans to develop a UI for Linux or MacOS at this time, but as we have mentioned before, OpenVideoCam is an open source application so we will be glad to join forces with other open source developers to port the UI to Linux and MacOS :)
 
 ## How long does it take for OpenVideoCam to process a 1-hour game?
 It really depends on how powerful your computer and NVIDIA graphics card are, but in general it should take about 3 hours.
