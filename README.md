@@ -1,5 +1,6 @@
 # OpenVideoCam
 
+
 ## What is OpenVideoCam?
 OpenVideoCam is an open source alternative to commercial AI automated sports cameras like Veo, Hudl, Spiideo, Pixellot and many others.
 
