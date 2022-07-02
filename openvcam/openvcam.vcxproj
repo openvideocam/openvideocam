@@ -73,9 +73,9 @@
     <PostBuildEvent>
       <Command>copy $(SolutionDir)..\binaries\sqlite\3.34.0\sqlite3.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\sqlite3.dll
 copy $(SolutionDir)..\binaries\openh264\1.8.0\openh264-1.8.0-win64.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\openh264-1.8.0-win64.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_world450d.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_world450d.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_ffmpeg450_64.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_videoio_ffmpeg450_64.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_msmf450_64d.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_videoio_msmf450_64d.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_world455d.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_world455d.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_videoio_ffmpeg455_64.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_videoio_ffmpeg455_64.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_videoio_msmf455_64d.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\opencv_videoio_msmf455_64d.dll
 copy $(SolutionDir)bin\debug-gpu\openvcamlib\openvcamlib.dll $(SolutionDir)bin\debug-gpu\$(ProjectName)\openvcamlib.dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -98,9 +98,9 @@ copy $(SolutionDir)bin\debug-gpu\openvcamlib\openvcamlib.dll $(SolutionDir)bin\d
     <PostBuildEvent>
       <Command>copy $(SolutionDir)..\binaries\sqlite\3.34.0\sqlite3.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\sqlite3.dll
 copy $(SolutionDir)..\binaries\openh264\1.8.0\openh264-1.8.0-win64.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\openh264-1.8.0-win64.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_world450.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_world450.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_ffmpeg450_64.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_videoio_ffmpeg450_64.dll
-copy $(SolutionDir)..\binaries\opencv\4.5.0\cpu\\build\x64\vc15\bin\opencv_videoio_msmf450_64.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_videoio_msmf450_64.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_world455.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_world455.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_videoio_ffmpeg455_64.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_videoio_ffmpeg455_64.dll
+copy $(SolutionDir)..\binaries\opencv\4.5.5\cpu\\build\x64\vc15\bin\opencv_videoio_msmf455_64.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\opencv_videoio_msmf455_64.dll
 copy $(SolutionDir)bin\release-gpu\openvcamlib\openvcamlib.dll $(SolutionDir)bin\release-gpu\$(ProjectName)\openvcamlib.dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

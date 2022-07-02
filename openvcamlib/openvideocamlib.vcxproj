@@ -76,15 +76,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\debug-gpu\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin\debug-gpu\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)..\binaries\opencv\4.5.0\cpu\build\include;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\debug\include;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\debug\include\torch\csrc\api\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\binaries\opencv\4.5.0\cpu\build\x64\vc15\lib;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\binaries\opencv\4.5.5\cpu\build\include;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\debug\include;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\debug\include\torch\csrc\api\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\binaries\opencv\4.5.5\cpu\build\x64\vc15\lib;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-gpu|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\release-gpu\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin\release-gpu\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)..\binaries\opencv\4.5.0\cpu\build\include;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\include\torch\csrc\api\include;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\binaries\opencv\4.5.0\cpu\build\x64\vc15\lib;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\binaries\opencv\4.5.5\cpu\build\include;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\include\torch\csrc\api\include;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\binaries\opencv\4.5.5\cpu\build\x64\vc15\lib;$(SolutionDir)..\binaries\sqlite\3.34.0;$(SolutionDir)..\binaries\libtorch\1.8.1-c111\release\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug-gpu|x64'">
     <ClCompile>
@@ -100,7 +100,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>../../binaries/sqlite/3.34.0/sqlite3.lib;torch.lib;torch_cpu.lib;torch_cuda.lib;c10.lib;c10_cuda.lib;../../binaries/opencv/4.5.0/cpu/build/x64/vc15/lib/opencv_world450d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../../binaries/sqlite/3.34.0/sqlite3.lib;torch.lib;torch_cpu.lib;torch_cuda.lib;c10.lib;c10_cuda.lib;../../binaries/opencv/4.5.5/cpu/build/x64/vc15/lib/opencv_world455d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/INCLUDE:"?ignore_this_library_placeholder@@YAHXZ" %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
@@ -125,7 +125,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>../../binaries/sqlite/3.34.0/sqlite3.lib;torch.lib;torch_cpu.lib;torch_cuda.lib;c10.lib;c10_cuda.lib;../../binaries/opencv/4.5.0/cpu/build/x64/vc15/lib/opencv_world450.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../../binaries/sqlite/3.34.0/sqlite3.lib;torch.lib;torch_cpu.lib;torch_cuda.lib;c10.lib;c10_cuda.lib;../../binaries/opencv/4.5.5/cpu/build/x64/vc15/lib/opencv_world455.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/INCLUDE:"?ignore_this_library_placeholder@@YAHXZ" %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
